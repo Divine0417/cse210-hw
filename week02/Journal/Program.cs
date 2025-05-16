@@ -118,7 +118,7 @@ class Journal
             Directory.CreateDirectory(backupFolder);
         }
 
-        string timestamp = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+        string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
         string backupFile = Path.Combine(backupFolder, $"journal_backup_{timestamp}.txt");
 
         using (StreamWriter writer = new(backupFile))
@@ -148,7 +148,7 @@ class Journal
     {
         if (!File.Exists(filename))
         {
-            System.Console.WriteLine($"File '{filename}' not found.");
+            Console.WriteLine($"File '{filename}' not found.");
             return;
         }
 
@@ -211,7 +211,7 @@ class PromptGenerator
         "Describe a beautiful moment you experienced today."
     };
 
-    private static readonly System.Random _random = new();
+    private static readonly Random _random = new();
 
     public string GetRandomPrompt()
     {
@@ -240,7 +240,7 @@ class Program
             Console.WriteLine("7. Exit");
             Console.Write("What would you like to do? (1–7): ");
 
-            string choice = System.Console.ReadLine();
+            string choice = Console.ReadLine();
             Console.WriteLine();
 
             switch (choice)
