@@ -235,8 +235,8 @@ class Program
             Console.WriteLine("2. Display the journal");
             Console.WriteLine("3. Save the journal to a file");
             Console.WriteLine("4. Load the journal from a file");
-            Console.WriteLine("5. Save to CSV file");
-            Console.WriteLine("6. Load from CSV file");
+            Console.WriteLine("5. Save to CSV file"); // Save to CSV
+            Console.WriteLine("6. Load from CSV file"); // Load from CSV
             Console.WriteLine("7. Exit");
             Console.Write("What would you like to do? (1–7): ");
 
@@ -288,12 +288,14 @@ class Program
                     journal.LoadFromFile(loadFile);
                     break;
                 
+                // New feature: Save to CSV
                 case "5":
                     Console.Write("Enter filename to save as CSV (e.g., journal.csv): ");
                     string csvSave = Console.ReadLine();
                     journal.SaveToCsv(csvSave);
                     break;
 
+                // New feature: Load from CSV
                 case "6":
                     Console.Write("Enter filename to load from CSV: ");
                     string csvLoad = Console.ReadLine();
