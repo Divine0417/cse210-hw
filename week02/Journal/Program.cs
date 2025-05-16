@@ -151,20 +151,12 @@ class Program
                 case "3":
                     Console.Write("Enter a filename to save to (e.g., journal.txt): ");
                     string saveFile = Console.ReadLine();
-                    if (!Path.IsPathRooted(saveFile))
-                    {
-                        saveFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, saveFile);
-                    }
                     journal.SaveToFile(saveFile);
                     break;
 
                 case "4":
                     Console.Write("Enter a filename to load from (e.g., journal.txt): ");
                     string loadFile = Console.ReadLine();
-                    if (!Path.IsPathRooted(loadFile))
-                    {
-                        loadFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, loadFile);
-                    }
                     journal.LoadFromFile(loadFile);
                     break;
 
