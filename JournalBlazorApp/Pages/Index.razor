@@ -1,0 +1,44 @@
+﻿@page "/"
+@using JournalBlazorApp.Models
+
+<h1>My Daily Journal</h1>
+
+<p><strong>@prompt</strong></p>
+<textarea @bind="entryText" rows="4" cols="60"></textarea><br/>
+<button @onclick="WriteEntry">Save Entry</button>
+
+<h3>Entries</h3>
+<ul>
+    @foreach (var entry in journal.Entries)
+    {
+        <li>
+            <strong>@entry.Date</strong>: @entry.Text
+            <br /><em>@entry.Prompt</em>
+        </li>
+    }
+</ul>
+
+@code {
+    private Journal journal = new Journal();
+    private string prompt = "";
+    private string entryText = "";
+
+    protected override void OnInitialized()
+    {
+        prompt = PromptGenerator.GetRandomPrompt();
+    }
+
+    private void WriteEntry()
+    {
+        journal.AddEntry(new Entry
+        {
+            Date = DateTime.Now.ToString("yyyy-MM-dd"),
+            Prompt = prompt,
+            Text = entryText
+        });
+
+        // Reset
+        entryText = "";
+        prompt = PromptGenerator.GetRandomPrompt();
+    }
+}
